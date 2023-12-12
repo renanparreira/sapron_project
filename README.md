@@ -31,7 +31,7 @@ Neste repositorio (sapron_project) foi criado o subdiretório 'reservas/csv' com
 
 **Exemplo**
 
-Em um cliente de API, como o Postman, executar a URL http://127.0.0.1:5000/distribuir_receita?propriedade_id=5001, para calcular a distribuição da propriedade 5001.
+Em um navegador ou em um cliente de API (como o Postman) executar a URL http://127.0.0.1:5000/distribuir_receita?propriedade_id=5001, para calcular a distribuição da propriedade 5001.
 
 **Resultado**
 
