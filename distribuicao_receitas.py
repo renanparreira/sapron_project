@@ -26,7 +26,7 @@ class DistribuidorReceita:
             if filename.endswith(".csv"):
                 #Lê cada arquivo CSV e adiciona as reservas correspondentes à lista
                 with open(os.path.join(self.diretorio_csv, filename), mode='r') as file:
-                    reader = csv.DictReader(file)
+                    reader = csv.DictReader(file, delimiter=';')
                     for row in reader:                        
                         if row['propriedade_id'] == propriedade_id:
                             reserva = Reserva(**row)
@@ -46,8 +46,6 @@ class DistribuidorReceita:
 
             resultados[mes_ano]['Proprietario'] += valor_calculado_proprietario
             resultados[mes_ano]['Anfitriao'] += valor_calculado_anfitriao
-
-            print(resultados)
 
         return resultados
 
