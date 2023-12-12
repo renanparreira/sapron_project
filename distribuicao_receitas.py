@@ -42,14 +42,10 @@ class DistribuidorReceita:
 
             # Agrupa os resultados por mês
             if mes_ano not in resultados:
-                #resultados[mes_ano] = {'Proprietario': 0, 'Anfitriao': 0}
                 resultados[mes_ano] = {'ID_Propriedade': reserva.propriedade_id,'ID_Proprietario': reserva.proprietario_id, 'Proprietario': 0, 'ID_Anfitriao': reserva.anfitriao_id, 'Anfitriao': 0}
 
             resultados[mes_ano]['Proprietario'] += valor_calculado_proprietario
             resultados[mes_ano]['Anfitriao'] += valor_calculado_anfitriao
-
-        print('resultados:')
-        print(resultados)
 
         return resultados
 
@@ -61,11 +57,9 @@ class DistribuidorReceita:
         arq_distribuicao = f'distribuicao_{data_hora}.csv'
         with open(arq_distribuicao, mode='w', newline='') as file:
             writer = csv.writer(file, delimiter=';')
-            #writer.writerow(['Mes', 'Valor_Proprietario', 'Valor_Anfitriao'])
             writer.writerow(['ID_Propriedade', 'Mes', 'ID_Proprietario', 'Valor_Proprietario', 'ID_Anfitriao', 'Valor_Anfitriao'])
 
             for mes_ano, valores in resultados.items():
-                #writer.writerow([mes_ano, round(valores['Proprietario'],2), round(valores['Anfitriao'],2)])
                 writer.writerow([valores['ID_Propriedade'], mes_ano, valores['ID_Proprietario'], round(valores['Proprietario'],2), valores['ID_Anfitriao'], round(valores['Anfitriao'],2)])
 
         return arq_distribuicao
